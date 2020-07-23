@@ -1,0 +1,19 @@
+version: '3'
+
+services:
+    rest-api:
+        container_name: "rest-api"
+        build: ./rest-api
+        image: rest-api:latest
+        ports:
+            - 3030:3030
+        restart: always
+
+    react-frontend-nginx:
+        depends_on:
+            - rest-api
+        build: ./server
+        image: react-frontend:latest
+        ports:
+            - 80:80
+        restart: always
