@@ -4,7 +4,6 @@ const cors = require("cors");
 
 const app = express();
 app.use(cors());
-const port = 3030;
 
 //enter your api key here
 const API_KEY="";
@@ -18,5 +17,5 @@ app.get('/articles', async (req, res) => {
         return res.send(result);
         });
 })
-
-app.listen(port, () => console.log(`App listening at http://localhost:${port}`))
+var port = app.listen(process.env.PORT || 3030);
+console.log(`App listening at port ${port}`)
